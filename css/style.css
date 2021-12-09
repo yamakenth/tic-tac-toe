@@ -38,9 +38,13 @@
   display: flex;
 }
 
-.board .col {
+.board .square {
   border: 1px solid #000000;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
 }
 
 .restart {
