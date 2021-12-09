@@ -3,6 +3,7 @@ const playGame = (() => {
   // initialize first player and print first message 
   let currPlayer = firstPlayer;
   displayController.printMessage(currPlayer.name);
+
   // eventListener on each square 
   const board = document.querySelectorAll('.square');
   board.forEach((square) => {
@@ -10,12 +11,41 @@ const playGame = (() => {
       const updated = gameBoard.update(e.target.id, currPlayer.symbol);
       if (updated) {
         displayController.render();
+        if (checkWin()) {
+          console.log('there is a winner');
+          displayController.printEndMessage(currPlayer.name);
+          return;
+        }
         (currPlayer === player1) ? currPlayer = player2 : currPlayer = player1;
         displayController.printMessage(currPlayer.name);
       }
     });
   });
 
+  // check for win 
+  const checkWin = () => {
+    console.log('checking for win...');
+    const currBoard = gameBoard.board;
+    // check for horizontal win 
+    for (let i = 0; i < 3; i++) {
+      if (currBoard[i][0] !== ' ' && currBoard[i][0] === currBoard[i][1] && currBoard[i][1] === currBoard[i][2]) {
+        return true;
+      }
+    }
+    // check for vertical win 
+    for (let j = 0; j < 3; j++) {
+      if (currBoard[0][j] !== ' ' && currBoard[0][j] === currBoard[1][j] && currBoard[1][j] === currBoard[2][j]) {
+        return true;
+      }
+    }
+    // check for diagonal win 
+    if (
+      (currBoard[0][0] !== ' ' && currBoard[0][0] === currBoard[1][1] && currBoard[1][1] === currBoard[2][2])
+      || (currBoard[0][2] !== ' ' && currBoard[0][2] === currBoard[1][1] && currBoard[1][1] === currBoard[2][0])
+    ) {
+      return true;
+    }
+  };
 });
 
 // gameBoard module 
@@ -39,7 +69,7 @@ const gameBoard = (() => {
       return false;
     }
   };
-  
+
   return { 
     board,
     update,
@@ -67,11 +97,18 @@ const displayController = (() => {
   const printMessage = (playerName) => {
     const message = document.querySelector('.message > h3');
     message.textContent = `${playerName}'s turn`;
-  }
+  };
+
+  // render end message 
+  const printEndMessage = (playerName) => {
+    const message = document.querySelector('.message > h3');
+    message.textContent = `${playerName} won!`;
+  };
   
   return { 
     render,
     printMessage,
+    printEndMessage,
   };
 })();
 
