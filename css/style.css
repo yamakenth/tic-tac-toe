@@ -4,16 +4,16 @@
 }
 
 .header {
-  padding: 12px 20px;
+  padding: 18px 20px;
   border-bottom: 3px solid #000000;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .header h1 {
-  width: 260px;
+  width: 300px;
   text-align: center;
   margin: 0 auto;
-  font-size: 44px;
+  font-size: 50px;
 }
 
 .message h3 {
