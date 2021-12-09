@@ -140,3 +140,15 @@ const refreshPage = (() => {
   const restart = document.querySelector('.restart button');
   restart.addEventListener('click', () => window.location.reload());
 })();
+
+// scale up square when hover 
+// take in no parameters 
+// return no results 
+const scaleOnHover = (() => {
+  const board = document.querySelectorAll('.square');
+  board.forEach((square) => {
+    square.addEventListener('mouseenter', (e) => e.target.classList.add('square-active'));
+    square.addEventListener('mouseleave', (e) => e.target.classList.remove('square-active'));
+
+  });
+})();
