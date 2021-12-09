@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  padding: 12px 20px;
+  border-bottom: 3px solid #000000;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  width: 260px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 44px;
+}
+
+.message h3 {
+  width: 300px;
+  margin: 0 auto 20px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.board {
+  border: 1px solid #000000;
+  width:480px;
+  height: 480px;
+  margin: 0 auto 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.board .row {
+  border: 1px solid #000000;
+  flex: 1;
+  display: flex;
+}
+
+.board .col {
+  border: 1px solid #000000;
+  flex: 1;
+}
+
+.restart {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.restart button {
+  font-size: 24px;
+}
+
+
