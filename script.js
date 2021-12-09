@@ -131,3 +131,12 @@ const playGame = (() => {
     }
   } 
 })();
+
+
+// refresh page 
+// take in no parameters 
+// return no results 
+const refreshPage = (() => {
+  const restart = document.querySelector('.restart button');
+  restart.addEventListener('click', () => window.location.reload());
+})();
