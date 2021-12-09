@@ -13,7 +13,11 @@ const playGame = (() => {
         displayController.render();
         if (checkWin()) {
           console.log('there is a winner');
-          displayController.printEndMessage(currPlayer.name);
+          displayController.printWinMessage(currPlayer.name);
+          return;
+        } else if (checkTie()) {
+          console.log('it\s a tie');
+          displayController.printTieMessage();
           return;
         }
         (currPlayer === player1) ? currPlayer = player2 : currPlayer = player1;
@@ -45,6 +49,18 @@ const playGame = (() => {
     ) {
       return true;
     }
+  };
+
+  // check for a tie 
+  const checkTie = () => {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (gameBoard.board[i][j] === ' ') {
+          return false;
+        }
+      }
+    }
+    return true;
   };
 });
 
@@ -99,16 +115,23 @@ const displayController = (() => {
     message.textContent = `${playerName}'s turn`;
   };
 
-  // render end message 
-  const printEndMessage = (playerName) => {
+  // render win message 
+  const printWinMessage = (playerName) => {
     const message = document.querySelector('.message > h3');
     message.textContent = `${playerName} won!`;
   };
   
+  // render tie message 
+  const printTieMessage = () => {
+    const message = document.querySelector('.message > h3');
+    message.textContent = `It was a tie!`;
+  }
+  
   return { 
     render,
     printMessage,
-    printEndMessage,
+    printWinMessage,
+    printTieMessage,
   };
 })();
 
